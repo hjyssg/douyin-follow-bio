@@ -157,7 +157,7 @@ def main():
                     # 在 Chrome 页面上弹一个通知，让你知道捕获到了
                     try:
                         page.evaluate(f"document.title = '✅ 已捕获 {len(all_followings)}/{total} 个关注'")
-                    except Exception:
+                    except BaseException:
                         pass
 
             except Exception as e:
