@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "fetch_followings",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/fetch_followings.py",
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}"
+    }
+  ]
+}
