@@ -108,7 +108,6 @@ def main():
             if "following/list" in url or "following_list" in url:
                 request_id = params.get("requestId")
                 pending_bodies[request_id] = url
-                print(f"\n  [监听] 检测到 following/list 请求: {url[:100]}...")
 
         def on_loading_finished(params):
             """CDP Network.loadingFinished 事件 - 响应体已就绪"""
@@ -153,7 +152,13 @@ def main():
 
                     total = data.get("total", "?")
                     has_more = data.get("has_more", False)
-                    print(f"  [监听 #{request_count}] +{new_count} 新用户 (本页{len(followings)}条) | 累计: {len(all_followings)}/{total} | has_more={has_more}")
+                    print(f"\n  ✅ [捕获 #{request_count}] +{new_count} 新用户 (本页{len(followings)}条) | 累计: {len(all_followings)}/{total} | {'还有更多' if has_more else '已到底'}")
+
+                    # 在 Chrome 页面上弹一个通知，让你知道捕获到了
+                    try:
+                        page.evaluate(f"document.title = '✅ 已捕获 {len(all_followings)}/{total} 个关注'")
+                    except Exception:
+                        pass
 
             except Exception as e:
                 print(f"  [监听] 读取响应体失败: {type(e).__name__}: {e}")
