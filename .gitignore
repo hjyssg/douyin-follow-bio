@@ -3,3 +3,4 @@ chrome_debug_profile/
 output/
 __pycache__/
 *.pyc
+nul
