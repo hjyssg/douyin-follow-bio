@@ -16,8 +16,8 @@ from pathlib import Path
 from playwright.sync_api import sync_playwright
 
 # 配置
-OUTPUT_DIR = Path(__file__).parent / "output"
-OUTPUT_DIR.mkdir(exist_ok=True)
+OUTPUT_DIR = Path(__file__).parent / "output" / time.strftime("%Y-%m-%d")
+OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 CDP_URL = "http://127.0.0.1:9222"
 CHROME_PATH = r"C:\Program Files\Google\Chrome\Application\chrome.exe"
 
@@ -226,6 +226,10 @@ def save_results():
             f.write(f"    粉丝: {user['follower_count']}\n")
             f.write(f"    主页: https://www.douyin.com/user/{user['sec_uid']}\n\n")
     print(f"简介汇总 → {summary_path}")
+
+    # 自动解析行程信息
+    from parse_bio import parse_and_print
+    parse_and_print(all_followings)
 
     print("\n完成！")
 
