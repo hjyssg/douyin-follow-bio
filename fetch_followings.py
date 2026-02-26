@@ -152,7 +152,7 @@ def main():
 
                     total = data.get("total", "?")
                     has_more = data.get("has_more", False)
-                    print(f"\n  ✅ [捕获 #{request_count}] +{new_count} 新用户 (本页{len(followings)}条) | 累计: {len(all_followings)}/{total} | {'还有更多' if has_more else '已到底'}")
+                    print(f"\n  ✅ [捕获 #{request_count}] +{new_count} 新用户 (本页{len(followings)}条) | 累计: {len(all_followings)}/{total} | {'还有更多' if has_more else '已到底'}", flush=True)
 
                     # 在 Chrome 页面上弹一个通知，让你知道捕获到了
                     try:
