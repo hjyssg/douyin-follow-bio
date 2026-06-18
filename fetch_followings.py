@@ -223,8 +223,8 @@ def save_results():
             f.write(f"[{i}] {user['nickname']}\n")
             sig = user["signature"].strip() if user["signature"] else "(无简介)"
             f.write(f"    简介: {sig}\n")
-            f.write(f"    粉丝: {user['follower_count']}\n")
-            f.write(f"    主页: https://www.douyin.com/user/{user['sec_uid']}\n\n")
+            # f.write(f"    粉丝: {user['follower_count']}\n")
+            # f.write(f"    主页: https://www.douyin.com/user/{user['sec_uid']}\n\n")
     print(f"简介汇总 → {summary_path}")
 
     # 自动解析行程信息
